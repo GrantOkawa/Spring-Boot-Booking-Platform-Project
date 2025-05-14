@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the app's code into the container
 COPY . /app
 
+# Grant execute permission to Maven wrapper
+RUN chmod +x ./mvnw
+
 # Build the Spring Boot app inside the container
 RUN ./mvnw clean package -DskipTests
 
