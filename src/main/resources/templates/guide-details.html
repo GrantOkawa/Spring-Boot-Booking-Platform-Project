@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Details</title>
+    <link rel="icon" type="image/jpg" th:href="@{/images/logo/logo.jpg}">
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+	<div th:replace="~{fragments :: navbar}"></div>
+
+    <div class="profile-header">
+        <div class="profile-container">
+            <div class="profile-image-container">
+                <img class="profile-image" th:src="${guide.imagePath}" th:alt="${guide.fullName}">
+            </div>
+            <div class="profile-details">  <h1 class="profile-name" th:text="${guide.fullName}">Guide Name</h1>
+                <h3 class="profile-role" th:text="${guide.role}">Guide Role</h3>
+                <p class="profile-bio" th:text="${guide.bio}">Guide Bio</p>
+                <a href="/guides" class="back-btn">← BACK TO ALL GUIDES</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-container">  <div class="profile-stats">
+            <h4>Guide Details</h4>
+            <hr>
+            <div class="stat-item">  <p class="stat-title">Specialty</p>
+                <p class="stat-value" th:text="${guide.specialty}">Specialty</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-title">Years of Experience</p>
+                <p class="stat-value" th:text="${guide.yearsExperience} + ' years'">Experience</p>
+            </div>
+            <div class="stat-item">
+                <p class="stat-title">Favorite Trail</p>
+                <p class="stat-value" th:text="${guide.favoriteTrail}">Favorite Trail</p>
+            </div>
+        </div>
+        <div class="profile-info"> <h3>About the Guide</h3>
+            <p th:text="${guide.bio}">Extended guide bio information will appear here. This gives visitors more detailed information about the guide's background, expertise, and what makes them special.</p>
+
+            <h3 class="mt-4">Certifications</h3>
+            <ul>
+                <li>Wilderness First Responder (WFR)</li>
+                <li>Leave No Trace Master Educator</li>
+                <li th:if="${guide.specialty == 'Winter survival skills'}">Avalanche Safety Level 2</li>
+                <li th:if="${guide.specialty == 'Alpine climbing'}">Technical Climbing Instructor</li>
+                <li th:if="${guide.specialty == 'Wildlife tracking'}">Certified Naturalist</li>
+            </ul>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

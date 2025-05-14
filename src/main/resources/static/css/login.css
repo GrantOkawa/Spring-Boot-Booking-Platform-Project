@@ -1,0 +1,148 @@
+/* Base Styles */
+:root {
+    --trail-green: #2d5a27;
+    --forest-green: #1e3d22;
+    --mountain-gray: #4a4a4a;
+    --sunset-orange: #ff7f50;
+    --sky-blue: #87ceeb;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(255, 255, 255, 0.5) 100%
+    ),
+    url('/images/background/mountain-texture.jpg');
+    min-height: 100vh;
+}
+
+/* Auth Page Layout */
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-header {
+    text-align: center;
+    padding: 2rem;
+    color: var(--forest-green);
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--trail-green);
+    margin-bottom: 1rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--trail-green);
+}
+
+.auth-card h2 {
+    color: var(--forest-green);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-control {
+    padding: 0.8rem;
+    border: 1px solid var(--trail-green);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    outline: 2px solid var(--sunset-orange);
+    border-color: transparent;
+}
+
+.btn-trail {
+    background-color: var(--trail-green);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-trail:hover {
+    background-color: var(--forest-green);
+    transform: translateY(-2px);
+}
+
+/* Links & Alerts */
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.trail-link {
+    color: var(--trail-green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.trail-link:hover {
+    color: var(--sunset-orange);
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.5rem;
+    }
+}

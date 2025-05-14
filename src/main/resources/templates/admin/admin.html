@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin</title>
+	<link rel="icon" type="image/jpg" th:href="@{/images/logo/logo.jpg}">
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+	<div th:replace="~{fragments :: navbar}"></div>
+
+    <div class="container">
+        <div class="registration-grid-wrapper">
+            <div class="registration-card trip-list-section">
+                <h3>All Trip Details</h3>
+                	<table class="trip-table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Image Url</th>
+							<th>Duration and Price</th>
+							<th>Title</th>
+							<th>Location</th>
+							<th>Area</th>
+							<th>Trip Type</th>
+							<th>Difficulty</th>
+							<th>Highlights</th>
+							<th colspan="2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each=" t : ${allTrips}">
+							<td th:text="${t.id}"></td>
+							<td th:text="${t.imageUrl}"></td>
+							<td th:text="${t.durationAndPrice}"></td>
+							<td th:text="${t.title}"></td>
+							<td th:text="${t.location}"></td>
+							<td th:text="${t.area}"></td>
+							<td th:text="${t.tripType}"></td>
+							<td th:text="${t.difficulty}"></td>
+							<td th:text="${t.highlights}"></td>
+							<td><a class="action-link update"
+								th:href="@{/updateTripById/}+${t.id}">Update</a></td>
+
+							<td><a class="action-link delete"
+								th:href="@{/deleteTripById/}+${t.id}">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+            </div>
+
+            <div class="registration-card register-section">
+                <h3>Update Trip Details</h3>
+                <form class="registration-form" method="post" th:action="@{/insertTrip}" th:object="${trip}">
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <label for="imageUrl">Image Url:</label>
+                    <input type="text" id="imageUrl" th:field="*{imageUrl}"/>
+
+                    <label for="durationAndPrice">Duration and Price:</label>
+                    <input type="text" id="durationAndPrice" th:field="*{durationAndPrice}"/>
+
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" th:field="*{title}"/>
+
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" th:field="*{location}"/>
+
+                    <label for="area">Area:</label>
+                    <input type="text" id="area" th:field="*{area}"/>
+                    
+                    <label for="tripType">Trip Type:</label>
+                    <input type="text" id="tripType" th:field="*{tripType}"/>
+                    
+                    <label for="difficulty">Difficulty:</label>
+                    <input type="text" id="difficulty" th:field="*{difficulty}"/>
+                    
+                    <label for="highlights">Highlights:</label>
+                    <input type="text" id="highlights" th:field="*{highlights}"/>
+
+                    <input type="submit" value="Insert" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

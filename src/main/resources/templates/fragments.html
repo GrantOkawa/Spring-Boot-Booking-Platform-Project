@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- This enables Spring security integration, allowing the use of security attributes (sec:authorize) in html tempalte -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragments</title>
+</head>
+<body>
+    <!-- Navigation Bar Fragment -->
+    <nav th:fragment="navbar">
+        <div class="logo">
+            <img src="/images/logo.jpg" alt="Logo"/>
+            <h1>Adventure Guides</h1>
+        </div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/destinations">Destinations</a></li>
+            <li><a href="/adventures">Adventures</a></li>
+            <li><a href="/guides">Guides</a></li>
+            
+            <!-- Show these when user is NOT logged in -->
+            <li sec:authorize="isAnonymous()">
+                <a href="/login">Login</a>
+            </li>
+            <li sec:authorize="isAnonymous()">
+                <a href="/signup">Signup</a>
+            </li>
+            
+            <!-- Show this when user IS logged in -->
+			<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" class="nav-form-item">
+				<form th:action="@{/logout}" method="post" class="nav-form">
+					<button type="submit" class="nav-link">Logout</button>
+				</form>
+			</li>
+			
+			<li sec:authorize="hasRole('ROLE_ADMIN')">
+				<a href="/admin" style="color: red;">Admin</a>
+			</li>
+
+		</ul>
+    </nav>
+</body>
+</html>

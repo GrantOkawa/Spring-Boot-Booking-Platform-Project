@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Permission Denied</title>
+<style>
+body {
+	background: linear-gradient(rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.7)), /* Soft white overlay */
+    url('/images/background/mountain-texture.jpg');
+	background-size: cover; /* Ensures full coverage */
+	font-family: Arial, sans-serif; 
+}
+
+h1 {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+p {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+div {
+	text-align: center;
+}
+
+a {
+	display: inline-block;
+	padding: 0.6rem 1.2rem;
+	background: #cd4f34; 
+	color: white; 
+	text-decoration: none;
+	border-radius: 0.3rem;
+	transition: background 0.2s ease;
+}
+
+a:hover {
+	background: #bf482e; 
+}
+</style>
+</head>
+<body>
+    <h1>Permission Denied</h1>
+    <p>Sorry, you do not have permission to access this page.</p>
+    <div>
+    	<a th:href="@{/}">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Destinations</title>
+    <link rel="icon" type="image/jpg" th:href="@{/images/logo/logo.jpg}">
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+	<div th:replace="~{fragments :: navbar}"></div>
+
+	<div class="container">
+        <h1 class="page-title">Canada Wide Adventures</h1>
+        <div class="grid">
+            <div th:each="destination : ${destinations}" class="card">
+                <div class="card-image" th:style="'background-image: url(\'' + @{${destination.imageUrl}} + '\');'">
+                    <a th:href="${destination.linkUrl}" class="explore-btn">
+                        EXPLORE <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="title">
+                            <span th:text="${destination.title}"></span><br><span th:text="${destination.subtitle}"></span>
+                        </h2>
+                    </div>
+                    <div class="trip-count"><span th:text="${destination.tripCount}"></span> Trip</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

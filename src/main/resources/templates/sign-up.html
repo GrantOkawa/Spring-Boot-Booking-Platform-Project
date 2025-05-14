@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+</head>
+<body class="auth-page">
+    <header class="auth-header">
+        <img src="../static/images/logo.jpg" th:src="@{/images/logo.jpg}" alt="Outdoor Adventures Logo" class="logo"/>
+        <h1>Begin Your Adventure</h1>
+    </header>
+
+    <main class="auth-container">
+        <section class="auth-card">
+            <h2>Create New Trail</h2>
+			<div id="error" class="alert alert-danger"
+				th:classappend="${error} ? 'show-error' : 'hide-error'"
+				th:text="${error}" style="display: none;">
+			</div>
+			
+			<form name="form" th:action="@{/signup}" method="post" onsubmit="return verify()" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Email:</label>
+                    <input type="email" id="username" name="username" required 
+                           class="form-control" placeholder="Enter your email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required 
+                           class="form-control" placeholder="Create a password"/>
+                </div>
+                <div class="form-group">
+                    <label for="verifyPassword">Verify Password:</label>
+                    <input type="password" id="verifyPassword" name="verifyPassword" required 
+                           class="form-control" placeholder="Re-enter your password"/>
+                </div>
+                <button type="submit" class="btn btn-trail">Start the Expedition</button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Already have a compass? <a th:href="@{/login}" class="trail-link">Navigate to Login</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

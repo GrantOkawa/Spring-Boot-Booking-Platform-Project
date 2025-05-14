@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Guides</title>
+    <link rel="icon" type="image/jpg" th:href="@{/images/logo/logo.jpg}">    
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">	
+</head>
+<body>
+
+	<div th:replace="~{fragments :: navbar}"></div>
+
+    <div class="container">  <h1 class="page-title">Meet Our Expert Guides</h1>
+        <h3 class="subtitle">The wilderness specialists who will lead your adventure</h3>
+        <p class="page-description">Our team of experienced hiking and backpacking guides are outdoor enthusiasts with extensive knowledge of trails, wilderness safety, and environmental conservation. With specialized training in wilderness first aid, navigation, and local ecology, our guides ensure both an educational and unforgettable adventure experience.</p>
+
+        <div class="row">  <div class="col-md-4" th:each="guide : ${guides}">  <div class="guide-card">  <div class="guide-img-container">
+                        <img class="guide-img" th:src="${guide.imagePath}" th:alt="${guide.fullName}">
+                        <div class="guide-role" th:text="${guide.role}">GUIDE ROLE</div>
+                        <a th:href="@{/guides/{id}(id=${guide.id})}" class="profile-btn">PROFILE →</a>
+                    </div>
+                    <div class="card-body">  <h5 class="guide-name" th:text="${guide.fullName}">Guide Name</h5>
+                        <p class="guide-specialty" th:text="'Specialty: ' + ${guide.specialty}">Specialty</p>
+                        <p class="guide-experience" th:text="${guide.yearsExperience} + ' years of experience'">Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

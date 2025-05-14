@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+</head>
+<body class="auth-page">
+    <header class="auth-header">
+        <img src="../static/images/logo.jpg" th:src="@{/images/logo.jpg}" alt="Outdoor Adventures Logo" class="logo"/>
+        <h1>Explore the Wilderness</h1>
+    </header>
+
+    <main class="auth-container">
+        <section class="auth-card">
+            <h2>Trail Login</h2>
+            
+            <div th:if="${param.error}" class="alert alert-danger">
+                <p>Invalid username or password.</p>
+            </div>
+            
+            <div th:if="${param.logout}" class="alert alert-success">
+                <p>You have successfully logged out.</p>
+            </div>
+            
+            <form th:action="@{/login}" method="post" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Email:</label>
+                    <input type="email" id="username" name="username" required 
+                           class="form-control" placeholder="Enter your email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required 
+                           class="form-control" placeholder="Enter your password"/>
+                </div>
+                <button type="submit" class="btn btn-trail">Continue the Journey</button>
+            </form>
+            
+            <div class="auth-links">
+                <p>New adventurer? <a th:href="@{/signup}" class="trail-link">Sign up</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

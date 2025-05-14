@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adventures</title>
+    <link rel="icon" type="image/jpg" th:href="@{/images/logo/logo.jpg}">
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+
+<body>
+
+	<div th:replace="~{fragments :: navbar}"></div>
+	
+	<div class="trip-cards-container">
+        <div th:each="trip : ${trips}" class="trip-card">
+            <div style="position: relative;">
+                <img th:src="${trip.imageUrl}" th:alt="${trip.title}" />
+            	<a href="/registration" class="register-button">Register</a>
+            </div>            
+            <div class="trip-info">
+                <h3 th:text="${trip.durationAndPrice}"></h3>
+                <h2 th:text="${trip.title}"></h2>
+                <p class="location">LOCATION: <span th:text="${trip.location}"></span></p>
+                <p class="area">AREA: <span th:text="${trip.area}"></span></p>
+                <p class="trip-type">TRIP TYPE: <span th:text="${trip.tripType}"></span></p>
+                <p class="difficulty">DIFFICULTY:
+                    <span class="difficulty-bar">
+                        <span th:each="i : ${#numbers.sequence(1, 5)}"
+                              th:class="${i <= trip.difficulty ? 'filled' : ''}"></span>
+                    </span>
+                </p>
+                <p class="highlights">HIGHLIGHTS: <span th:text="${trip.highlights}"></span></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
